@@ -78,7 +78,8 @@ void HypnoEye::rotateCCW(uint8_t steps) {
 }
 
 void HypnoEye::clear() {
-	strip.clear();
+	uint32_t off = 0;
+	this->setAll(off);
 }
 
 void HypnoEye::setAll(uint32_t color) {
