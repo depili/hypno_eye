@@ -1,9 +1,10 @@
 #include <hypno_eye.h>
 
 
-HypnoEye::HypnoEye(uint8_t pin, uint8_t brightness) {
+HypnoEye::HypnoEye(uint8_t pin, uint8_t b) {
 	strip = Adafruit_NeoPixel(19, pin, NEO_GRB + NEO_KHZ800);
 	rotation = 0;
+	brightness = b;
 	for(uint8_t i = 0; i < OUTER_LEDS; ++i)
 	{
 		outerLeds[i] = strip.Color(0,0,0);
@@ -14,7 +15,6 @@ HypnoEye::HypnoEye(uint8_t pin, uint8_t brightness) {
 	}
 	centerLed = HypnoEye::strip.Color(0,0,0);
 	strip.begin();
-	strip.setBrightness(brightness);
 }
 
 HypnoEye::~HypnoEye() {
@@ -40,6 +40,7 @@ void HypnoEye::setCenterLed(uint32_t led) {
 }
 
 void HypnoEye::show() {
+	strip.setBrightness(brightness);
 	for(size_t i = 0; i < OUTER_LEDS; ++i)
 	{
 		strip.setPixelColor(i, outerLeds[(i + 11 + rotation) % OUTER_LEDS]); 
