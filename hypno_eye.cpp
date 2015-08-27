@@ -82,8 +82,13 @@ void HypnoEye::clear() {
 }
 
 void HypnoEye::setAll(uint32_t color) {
-	for(size_t i = 0; i < OUTER_LEDS + INNER_LEDS + 1; ++i)
+	centerLed = color;
+	for(size_t i = 0; i < INNER_LEDS; ++i)
 	{
-		strip.setPixelColor(i, color);
+		innerLeds[i] = color;
+	}
+	for(size_t i = 0; i < OUTER_LEDS; ++i)
+	{
+		outerLeds[i] = color;
 	}
 }
