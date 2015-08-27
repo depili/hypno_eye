@@ -25,7 +25,9 @@ public:
 	
 	void show();
 	void rotateCW();
+	void rotateCW(uint8_t steps);
 	void rotateCCW();
+	void rotateCCW(uint8_t steps);
 	
 	void clear();
 	

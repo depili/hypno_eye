@@ -53,14 +53,27 @@ void HypnoEye::show() {
 }
 
 void HypnoEye::rotateCW() {
-	rotation = (rotation + 1) % 12;
+	rotation = (rotation + 1) % OUTER_LEDS;
+}
+
+void HypnoEye::rotateCW(uint8_t steps) {
+	rotation = (rotation + steps) % OUTER_LEDS;
 }
 
 void HypnoEye::rotateCCW() {
 	if (rotation == 0) {
-		rotation = 11;
+		rotation = OUTER_LEDS - 1;
 	} else {
-		rotation = (rotation - 1) % 12;
+		rotation -= 1;
+	}
+}
+
+void HypnoEye::rotateCCW(uint8_t steps) {
+	if (rotation < steps) {
+		steps -= rotation;
+		rotation = OUTER_LEDS - (steps % OUTER_LEDS)
+	} else {
+		rotation -= steps;
 	}
 }
 
