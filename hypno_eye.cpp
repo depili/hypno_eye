@@ -18,7 +18,8 @@ HypnoEye::HypnoEye(uint8_t pin, uint8_t b) {
 }
 
 HypnoEye::~HypnoEye() {
-	
+	strip.clear();
+	strip.show();
 }
 
 void HypnoEye::setOuterLeds(uint32_t *leds) {
