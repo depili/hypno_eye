@@ -71,7 +71,7 @@ void HypnoEye::rotateCCW() {
 void HypnoEye::rotateCCW(uint8_t steps) {
 	if (rotation < steps) {
 		steps -= rotation;
-		rotation = OUTER_LEDS - (steps % OUTER_LEDS)
+		rotation = OUTER_LEDS - (steps % OUTER_LEDS);
 	} else {
 		rotation -= steps;
 	}
